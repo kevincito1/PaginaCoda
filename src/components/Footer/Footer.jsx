@@ -28,7 +28,7 @@ const Footer = () => {
             viewport={{ once: true }}
           >
             <div className="footer-logo-container">
-              <img src="src/resources/imgs/CODA 360-logo-transparent.png" alt="CODA" className="footer-logo" />
+              <img src="/images/CODA 360-logo-transparent.png" alt="CODA" className="footer-logo" />
               <h3>CODA</h3>
             </div>
             <p className="footer-tagline">

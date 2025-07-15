@@ -92,7 +92,7 @@ const About = () => {
             viewport={{ once: true }}
           >
             <div className="about-image">
-              <img src="src/resources/imgs/historia.webp" alt="Equipo de trabajo" />
+              <img src="/images/historia.webp" alt="Equipo de trabajo" />
             </div>
           </motion.div>
         </div>

@@ -91,7 +91,7 @@ const Hero = () => {
           >
             <div className="hero-image">
               <div className="image-placeholder">
-                <img src="src/resources/imgs/CODA 360-logo-transparent.png" alt="CODA" />
+                <img src="/images/CODA 360-logo-transparent.png" alt="CODA" />
               </div>
             </div>
           </motion.div>

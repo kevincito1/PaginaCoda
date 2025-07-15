@@ -42,7 +42,7 @@ const Navbar = () => {
       <div className="container">
         <div className="nav-content">
           <div className="nav-logo">
-            <img src="src/resources/imgs/CODA 360-logo-transparent.png" alt="CODA" className="logo-image" />
+            <img src="/images/CODA 360-logo-transparent.png" alt="CODA" className="logo-image" />
             <span className="logo-text">CODA</span>
           </div>
 
