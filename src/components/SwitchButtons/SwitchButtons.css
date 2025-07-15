@@ -1,0 +1,82 @@
+.switch-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.switch-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.switch-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.switch-button.active {
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+}
+
+.switch-button.active:hover {
+  background: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.language-indicator {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  background: var(--accent-color);
+  color: white;
+  font-size: 8px;
+  font-weight: bold;
+  padding: 1px 15px;
+  border-radius: 4px;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Modo oscuro */
+.dark .switch-button {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.dark .switch-button:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .switch-buttons {
+    gap: 0.25rem;
+  }
+  
+  .switch-button {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .language-indicator {
+    font-size: 7px;
+    min-width: 14px;
+  }
+} 

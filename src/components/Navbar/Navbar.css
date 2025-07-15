@@ -15,6 +15,17 @@
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Modo oscuro */
+.dark .navbar {
+  background: rgba(17, 24, 39, 0.95);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dark .navbar.scrolled {
+  background: rgba(17, 24, 39, 0.98);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
 .nav-content {
   display: flex;
   justify-content: space-between;
@@ -46,6 +57,7 @@
   display: flex;
   gap: 2rem;
   align-items: center;
+  margin-left: auto;
 }
 
 .nav-link {
@@ -85,6 +97,11 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .dark .nav-menu {
+    background: rgba(17, 24, 39, 0.98);
     border-bottom: 1px solid var(--border-color);
   }
 

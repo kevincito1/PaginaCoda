@@ -1,12 +1,19 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ExternalLink, Github, Eye } from 'lucide-react'
+import { useAppContext } from '../../context/AppContext'
+import { useTranslation } from '../../translations/translations'
 import './Projects.css'
 
 const Projects = () => {
-  const [selectedCategory, setSelectedCategory] = useState('Todos')
+  const { language } = useAppContext()
+  const t = useTranslation(language)
+  
+  const [selectedCategory, setSelectedCategory] = useState(language === 'es' ? 'Todos' : 'All')
 
-  const categories = ['Todos', 'Web', 'Mobile', 'Diseño']
+  const categories = language === 'es' 
+    ? ['Todos', 'Web', 'Mobile', 'Diseño']
+    : ['All', 'Web', 'Mobile', 'Design']
 
   const projects = [
     {
@@ -77,7 +84,7 @@ const Projects = () => {
     }
   ]
 
-  const filteredProjects = selectedCategory === 'Todos' 
+  const filteredProjects = (selectedCategory === 'Todos' || selectedCategory === 'All')
     ? projects 
     : projects.filter(project => project.category === selectedCategory)
 
@@ -91,9 +98,9 @@ const Projects = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="section-title">Nuestros Proyectos</h2>
+          <h2 className="section-title">{t.projects.title}</h2>
           <p className="section-subtitle">
-            Una selección de nuestros trabajos más recientes y destacados
+            {t.projects.subtitle}
           </p>
         </motion.div>
 
@@ -136,7 +143,7 @@ const Projects = () => {
                     <span>{project.title}</span>
                   </div>
                   {project.featured && (
-                    <div className="featured-badge">Destacado</div>
+                    <div className="featured-badge">{language === 'es' ? 'Destacado' : 'Featured'}</div>
                   )}
                   <div className="project-overlay">
                     <div className="project-links">
@@ -168,7 +175,7 @@ const Projects = () => {
                       className="btn btn-primary"
                     >
                       <ExternalLink size={16} />
-                      Ver proyecto
+                      {t.projects.viewProject}
                     </a>
                   </div>
                 </div>

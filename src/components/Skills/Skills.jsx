@@ -1,11 +1,16 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useAppContext } from '../../context/AppContext'
+import { useTranslation } from '../../translations/translations'
 import './Skills.css'
 
 const Skills = () => {
+  const { language } = useAppContext()
+  const t = useTranslation(language)
+  
   const skillCategories = [
     {
-      category: 'Frontend',
+      category: t.skills.categories.frontend,
       skills: [
         { name: 'React', level: 90 },
         { name: 'JavaScript', level: 95 },
@@ -16,7 +21,7 @@ const Skills = () => {
       ]
     },
     {
-      category: 'Backend',
+      category: t.skills.categories.backend,
       skills: [
         { name: 'Node.js', level: 85 },
         { name: 'Python', level: 80 },
@@ -27,7 +32,7 @@ const Skills = () => {
       ]
     },
     {
-      category: 'Diseño & UX',
+      category: language === 'es' ? 'Diseño & UX' : 'Design & UX',
       skills: [
         { name: 'Figma', level: 85 },
         { name: 'Adobe XD', level: 80 },
@@ -38,7 +43,7 @@ const Skills = () => {
       ]
     },
     {
-      category: 'Herramientas',
+      category: language === 'es' ? 'Herramientas' : 'Tools',
       skills: [
         { name: 'Git', level: 90 },
         { name: 'Docker', level: 75 },
@@ -67,9 +72,9 @@ const Skills = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="section-title">Nuestras Habilidades</h2>
+          <h2 className="section-title">{t.skills.title}</h2>
           <p className="section-subtitle">
-            Tecnologías y herramientas que utilizamos para crear experiencias digitales excepcionales
+            {t.skills.subtitle}
           </p>
         </motion.div>
 
@@ -121,7 +126,7 @@ const Skills = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           viewport={{ once: true }}
         >
-          <h3 className="technologies-title">Tecnologías que manejamos</h3>
+          <h3 className="technologies-title">{language === 'es' ? 'Tecnologías que manejamos' : 'Technologies we handle'}</h3>
           <div className="technologies-grid">
             {technologies.map((tech, index) => (
               <motion.div

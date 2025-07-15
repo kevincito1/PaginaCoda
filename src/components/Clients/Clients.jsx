@@ -1,9 +1,14 @@
 import React, { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
+import { useAppContext } from '../../context/AppContext'
+import { useTranslation } from '../../translations/translations'
 import './Clients.css'
 
 const Clients = () => {
+  const { language } = useAppContext()
+  const t = useTranslation(language)
+  
   const [currentIndex, setCurrentIndex] = useState(0)
   const carouselRef = useRef(null)
 
@@ -96,9 +101,9 @@ const Clients = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="section-title">Clientes Satisfechos</h2>
+          <h2 className="section-title">{t.clients.title}</h2>
           <p className="section-subtitle">
-            Empresas que han confiado en nuestro trabajo y han quedado satisfechas con los resultados
+            {t.clients.subtitle}
           </p>
         </motion.div>
 
@@ -144,7 +149,7 @@ const Clients = () => {
                       {renderStars(clients[currentIndex].rating)}
                     </div>
                     <span className="rating-text">
-                      {clients[currentIndex].rating}/5 estrellas
+                      {clients[currentIndex].rating}/5 {language === 'es' ? 'estrellas' : 'stars'}
                     </span>
                   </div>
                 </div>
@@ -190,15 +195,15 @@ const Clients = () => {
           <div className="stats-grid">
             <div className="stat-item">
               <div className="stat-number">{clients.length}+</div>
-              <div className="stat-label">Clientes Satisfechos</div>
+              <div className="stat-label">{language === 'es' ? 'Clientes Satisfechos' : 'Satisfied Clients'}</div>
             </div>
             <div className="stat-item">
               <div className="stat-number">100%</div>
-              <div className="stat-label">Proyectos Entregados</div>
+              <div className="stat-label">{language === 'es' ? 'Proyectos Entregados' : 'Projects Delivered'}</div>
             </div>
             <div className="stat-item">
               <div className="stat-number">5.0</div>
-              <div className="stat-label">Calificación Promedio</div>
+              <div className="stat-label">{language === 'es' ? 'Calificación Promedio' : 'Average Rating'}</div>
             </div>
           </div>
         </motion.div>

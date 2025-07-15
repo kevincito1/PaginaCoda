@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react'
+import { useAppContext } from '../../context/AppContext'
+import { useTranslation } from '../../translations/translations'
 import './Contact.css'
 
 const Contact = () => {
+  const { language } = useAppContext()
+  const t = useTranslation(language)
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -74,9 +79,9 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="section-title">Contacto</h2>
+          <h2 className="section-title">{t.contact.title}</h2>
           <p className="section-subtitle">
-            ¿Tienes un proyecto en mente? ¡Hablemos sobre cómo podemos ayudarte a hacerlo realidad!
+            {t.contact.subtitle}
           </p>
         </motion.div>
 
@@ -88,10 +93,12 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h3>Información de contacto</h3>
+            <h3>{language === 'es' ? 'Información de contacto' : 'Contact Information'}</h3>
             <p>
-              Estamos siempre abiertos a nuevas oportunidades y colaboraciones. 
-              No dudes en contactarnos para discutir tu proyecto o simplemente para saludar.
+              {language === 'es' 
+                ? 'Estamos siempre abiertos a nuevas oportunidades y colaboraciones. No dudes en contactarnos para discutir tu proyecto o simplemente para saludar.'
+                : 'We are always open to new opportunities and collaborations. Don\'t hesitate to contact us to discuss your project or just to say hello.'
+              }
             </p>
 
             <div className="contact-details">
@@ -116,7 +123,7 @@ const Contact = () => {
             </div>
 
             <div className="social-links">
-              <h4>Síguenos en redes sociales</h4>
+              <h4>{language === 'es' ? 'Síguenos en redes sociales' : 'Follow us on social media'}</h4>
               <div className="social-icons">
                 {socialLinks.map((social, index) => (
                   <motion.a
@@ -144,7 +151,7 @@ const Contact = () => {
           >
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="name">Nombre completo</label>
+                <label htmlFor="name">{t.contact.form.name}</label>
                 <input
                   type="text"
                   id="name"
@@ -152,12 +159,12 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  placeholder="Tu nombre completo"
+                  placeholder={language === 'es' ? 'Tu nombre completo' : 'Your full name'}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">{t.contact.form.email}</label>
                 <input
                   type="email"
                   id="email"
@@ -170,7 +177,7 @@ const Contact = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="subject">Asunto</label>
+                <label htmlFor="subject">{language === 'es' ? 'Asunto' : 'Subject'}</label>
                 <input
                   type="text"
                   id="subject"
@@ -178,12 +185,12 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  placeholder="¿En qué podemos ayudarte?"
+                  placeholder={language === 'es' ? '¿En qué podemos ayudarte?' : 'How can we help you?'}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="message">Mensaje</label>
+                <label htmlFor="message">{t.contact.form.message}</label>
                 <textarea
                   id="message"
                   name="message"
@@ -191,7 +198,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows="5"
-                  placeholder="Cuéntanos más sobre tu proyecto..."
+                  placeholder={language === 'es' ? 'Cuéntanos más sobre tu proyecto...' : 'Tell us more about your project...'}
                 />
               </div>
 
@@ -203,7 +210,7 @@ const Contact = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Send size={16} />
-                {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
+                {isSubmitting ? (language === 'es' ? 'Enviando...' : 'Sending...') : t.contact.form.send}
               </motion.button>
             </form>
           </motion.div>

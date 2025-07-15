@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { AppProvider } from './context/AppContext'
 import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero/Hero'
 import About from './components/About/About'
@@ -11,20 +12,22 @@ import Footer from './components/Footer/Footer'
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Navbar />
-        <main>
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Clients />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <AppProvider>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <main>
+            <Hero />
+            <About />
+            <Skills />
+            <Projects />
+            <Clients />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </AppProvider>
   )
 }
 

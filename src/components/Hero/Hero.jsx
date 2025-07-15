@@ -1,9 +1,14 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react'
+import { useAppContext } from '../../context/AppContext'
+import { useTranslation } from '../../translations/translations'
 import './Hero.css'
 
 const Hero = () => {
+  const { language } = useAppContext()
+  const t = useTranslation(language)
+  
   const scrollToAbout = () => {
     const element = document.querySelector('#about')
     if (element) {
@@ -22,13 +27,13 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="hero-title">
-              Somos <span className="text-gradient">CODA</span>
+              {language === 'es' ? 'Somos' : 'We are'} <span className="text-gradient">CODA</span>
             </h1>
             <p className="hero-subtitle">
-              Empresa especializada en desarrollo web a la medida y soluciones digitales innovadoras
+              {t.hero.title}
             </p>
             <p className="hero-description">
-              Transformamos ideas en experiencias digitales excepcionales. Creamos sitios web, aplicaciones móviles y sistemas web personalizados que impulsan el crecimiento de tu negocio.
+              {t.hero.subtitle}
             </p>
             
             <div className="hero-buttons">
@@ -38,14 +43,14 @@ const Hero = () => {
                 whileTap={{ scale: 0.95 }}
                 onClick={scrollToAbout}
               >
-                Conoce nuestro trabajo
+                {t.hero.cta}
               </motion.button>
               <motion.button
                 className="btn btn-outline"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Solicitar cotización
+                {language === 'es' ? 'Solicitar cotización' : 'Request Quote'}
               </motion.button>
             </div>
 
